@@ -26,14 +26,13 @@ public class FluentWaitTests2 {
     public void FluentWaitTests2(){
         WebElement startButton = driver.findElement(By.xpath("//*[@id='start']/button"));
         startButton.click();
-
         FluentWait<WebDriver> fluentWait = new FluentWait<>(driver);
         WebElement helloWorldSign = fluentWait
         .withTimeout(Duration.ofSeconds(10))
         .pollingEvery(Duration.ofMillis(250))
         .ignoring(NoSuchElementException.class)
         .until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
-       
+
         assertTrue(helloWorldSign.isDisplayed());
     }
 }
